@@ -1,0 +1,24 @@
+{
+  "name": "google-docs-fetch",
+  "version": "0.0.1",
+  "description": "Fetch a Google Docs document as formatted, inlineable HTML.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zacharyliu/google-docs-fetch.git"
+  },
+  "author": "Zachary Liu",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/zacharyliu/google-docs-fetch/issues"
+  },
+  "homepage": "https://github.com/zacharyliu/google-docs-fetch#readme",
+  "dependencies": {
+    "cheerio": "^0.20.0",
+    "css": "^2.2.1",
+    "request": "^2.72.0"
+  }
+}
