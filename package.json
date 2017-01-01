@@ -1,6 +1,6 @@
 {
   "name": "google-docs-fetch",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Fetch a Google Docs document as formatted, inlineable HTML.",
   "main": "index.js",
   "scripts": {

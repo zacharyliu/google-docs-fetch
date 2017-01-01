@@ -1,6 +1,7 @@
 var cheerio = require('cheerio');
 var css = require('css');
 var request = require('request');
+var url = require('url')
 
 module.exports = function (docId, callback) {
   var docUrl = 'https://docs.google.com/document/export?format=html&id=' + docId;
@@ -19,22 +20,22 @@ module.exports = function (docId, callback) {
     var className = 'page-content-' + docId;
 
     // Process stylesheet
-    for (var rule of stylesAst.stylesheet.rules) {
-        if (rule.type !== 'rule') continue;
+    stylesAst.stylesheet.rules.forEach(function (rule) {
+        if (rule.type !== 'rule') return;
 
         // Wrap all selectors in .page-content class
         rule.selectors = rule.selectors.map(function (e) {
           return '.' + className + ' ' + e;
         });
 
-        for (var declaration of rule.declarations) {
-            if (declaration.type !== 'declaration') continue;
+        rule.declarations.forEach(function (declaration) {
+            if (declaration.type !== 'declaration') return;
 
             // Remove font-family styles
             if (declaration.property === 'font-family')
                 declaration.value = '';
-        }
-    }
+        });
+    });
     var parsedStyles = css.stringify(stylesAst);
 
     // Process body
